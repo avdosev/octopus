@@ -1,0 +1,33 @@
+{
+    "name": "octopus",
+    "version": "0.2.0",
+    "description": "Small git-platform",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/avdosev/octopus"
+    },
+    "author": "K. company",
+    "license": "ISC",
+    "homepage": "https://github.com/avdosev/octopus#readme",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.16.0",
+      "dotenv": "^4.0.0",
+      "express": "^4.14.0",
+      "express-handlebars": "^3.0.0",
+      "express-session": "^1.15.0",
+      "express-validator": "^5.3.1",
+      "mysql2": "^1.6.5",
+      "passport": "^0.3.2",
+      "passport-local": "^1.0.0",
+      "pug": "^2.0.3",
+      "sequelize": "^5.7.4",
+      "sequelize-cli": "^5.4.0",
+      "serve-favicon": "^2.5.0"
+    }
+}
+  
