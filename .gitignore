@@ -58,3 +58,4 @@ typings/
 .next
 
 .vscode
+package-lock.json
