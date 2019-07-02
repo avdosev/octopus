@@ -7,7 +7,7 @@ const session = require('express-session');
 const models = require('./database/models');
 
 
-const { initAuthControllers } = require('./routes/main.js');
+const initControllers = require('./routes');
 const { loadPasportStrategies } = require('./controllers/users');
 const config = require("./config")
 const { port, imgDir } = config;
@@ -27,7 +27,7 @@ app.set('view engine', 'pug');
 
 //app.use(logRequest); // логирование всех (или тех что никак не обработались) запросов
 
-initAuthControllers(app, passport);
+initControllers(app, passport);
 loadPasportStrategies(passport, models.user);
 
 async function start() {
@@ -46,8 +46,6 @@ async function start() {
     });
 }
 
-start();
-
-
+start().catch(err => console.log('server not started'));
 
 module.exports = app

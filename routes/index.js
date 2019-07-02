@@ -1,39 +1,41 @@
 const express = require('express')
+const bodyParser = require('body-parser');
+
 const config = require('../config')
 
 const {
     userCreateValidator,
-    userLoginValidator,
-    articleValidator
+    userLoginValidator
 } = require('../services/validator');
 
-const bodyParser = require('body-parser');
 
 const Handler = require('../controllers/request_handler')
 const Response = require('../controllers/respondent')
+const Debug = require('../controllers/debug');
 
 //  проверка логирования
 const { isLoggedIn, loggedCheker } = require('../controllers/logged.js');
 
-const Debug = require('../controllers/debug');
 
-const initAuthControllers = (app, passport) => {
+const initControllers = (app, passport) => {
+    //парсим херню
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use('/api/*', bodyParser.json())
+
+    // -- STATIC FILES
+
+    app.use('/public',  express.static(config.mainDir + '/public' ));
+    
     // -- PAGES --
 
-    app.get('/', urlencodedParser, Response.renderPage.index);
+    app.get('/', Response.renderPage.main);
     app.get('/register', Response.renderPage.register);
     app.get('/signin', Response.renderPage.signin);
 
-    // -- ARTICLES API -- 
-
-    //парсим херню
-    app.use('/api/*', bodyParser.json(), bodyParser.urlencoded({ extended: true }))
-    
     // -- (L)USERS API --
    
     app.post(
-        '/register',
-        urlencodedParser,
+        '/api/register',
         userCreateValidator,
         passport.authenticate('local-signup', {
             successRedirect: '/',
@@ -42,12 +44,11 @@ const initAuthControllers = (app, passport) => {
     );
 
     app.post(
-        '/sign_In', 
-        urlencodedParser,
+        '/api/signin', 
         userLoginValidator,
         passport.authenticate('local-signin', {
             successRedirect: '/',
-            failureRedirect: '/sign_In'
+            failureRedirect: '/signin'
         })
     );
 
@@ -56,7 +57,7 @@ const initAuthControllers = (app, passport) => {
         console.error(err.stack);
         res.status(500);
         next()
-    }, Response.renderPage.errorPage);
+    }, Response.renderPage.error_page);
 
     //-- NOT FOUND PAGE --
     app.use((req, res) => {
@@ -64,6 +65,5 @@ const initAuthControllers = (app, passport) => {
     })
 };
 
-module.exports = {
-    initAuthControllers
-};
+module.exports = initControllers
+

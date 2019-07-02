@@ -3,8 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin&subset=cyrillic');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&subset=cyrillic');
 
+@import url('./modules/colors.css');
+
 body {
-    background: var(--main-metida-color);
+    background: var(--main-white-color);
     word-wrap: break-word;
     margin: 0;
     font-size: 16px;
@@ -17,5 +19,5 @@ a {
 
 button {
     border-style: none;
-    padding: 0.3em 1em
+    padding: 0.3rem 1rem
 }

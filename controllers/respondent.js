@@ -1,14 +1,3 @@
-function redirectToArticle(req, res, next) {
-    // по идее этого здесь быть не должно но тогда сервак станет еще более модульным что не совсем хорошо так что пусть будет здесь
-    if (!res.values.success) {
-        res.render('error_page')
-        return ;
-    }
-    const id = res.values.article.id
-    const url = `/post/${id}`
-    res.redirect(url)
-}
-
 function jsonValuesWith(arr) {
     return function(req, res) {
         const obj = new Object;
@@ -35,10 +24,9 @@ function jsonValue(key) {
     }
 }
 
-const renderPage = require('./page');
+const renderPage = require('./pages');
 
 module.exports = {
-    redirectToArticle,
     renderPage,
     jsonValuesWith,
     jsonValue

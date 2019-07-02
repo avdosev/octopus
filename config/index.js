@@ -24,6 +24,5 @@ module.exports = {
     imgDir,
     secretKey,
     production,
-    mail,
-    messages
+    mail
 };
