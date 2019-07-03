@@ -1,84 +1,36 @@
-const github_api = require('github-api')
-const bitbucket_api = require('bitbucket')
+const Github = require('./github')
+const Bitbucket = require('./bitbucket')
+
+const consts = require('./const_for_class')
 
 
 class GitController {
-
-    constructor({token, username, password}, git_service) {
-        this.token = token;
-        this.git_service = git_service;
-        
-        this.initUser({username, password})
-    }
+    // Это не то
+    // constructor({token, username, password}, git_service) {
+    //     this.gitData({token, username, password}, git_service)
+    // }
     
-    initUser({username, password}) {
-        this.user = {
-            username, password
-        }
-    }
+    // set gitData({token, username, password}, git_service) {
+    //     this.token = token;
+    //     this.git_service = git_service;
+    //     this.userdata = {
+    //         username,
+    //         password
+    //     }
+    // }
 
-    auth(type = typeauth.with_userdata) {
-        let data_for_auth;
-        if (type === typeauth.with_userdata) {
-            data_for_auth = {
-                username: this.user.username,
-                password: this.user.password
-            }
-        } else if (type === typeauth.with_token) {
-            data_for_auth = {
-                token: this.token
-            }
-        } else {
-            throw Error('not supported auth type')
-        }
-        
-        
-        // auth
-        const gh = new github_api(data_for_auth)
-        const user = gh.getUser(data_for_auth.username);
-        console.log(data_for_auth, gh, user);
-        
-        this.local_auth = { 
-            gh: user
-        }
+    // get service() {
+    //     return this.git_service;
+    // }
 
-    }
-    
-    set gitData({token, git_service}) {
-        this.token = token;
-        this.git_service = git_service;
-    }
-    
-    get gitData() {
-        return {
-            token: this.token,
-            git_service: this.git_service
-        }
-    }
-    
-    async getListRepos() {
-        let res = [];
-
-        if (this.local_auth && this.local_auth.gh) {
-            try {
-                res = await this.local_auth.gh.listRepos()
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        return res;
-    }
-    
-
-    async createRepo(option) {
-        if (this.local_auth && this.local_auth.gh) {
-
-        }
-    }
+    // set service(service) {
+    //     // todo хз че тут должно быть возможно какой то свап или еще чета
+    //     this.git_service = service
+    // }
     
 }
 
 module.exports = {
     GitController,
-    typeauth
+    ...consts
 }
