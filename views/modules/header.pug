@@ -1,24 +1,30 @@
-header.header
-  .logo  
-    a(href='/')
-      img(src="/public/img/logo.png" alt='Metida' class="logoImg" ismap)   
-  .regSection 
-    nav
-      ul.topmenu
-        li
-          img#burger.icon(src='/public/img/mobile_menu.png')
-          ul#submenu.submenu
-            if authorised 
-              li
-                a.BlackButton#createArticle(href='/createArticle') Написать
-              li
-                a.BlackButton#home(href='/home') Профиль
-              li
-                a.GreyButton#logout(href='/logout') Выйти
-            else
-              li
-                a.GreyButton#signIn(href='/sign_In') Войти
-              li
-                a.BlackButton#register(href='/register') Регистрация
-  hr
+header
+  .header_inner
+    .logo  
+      a(href='/')
+        img(src="/public/img/octopus.png" alt='octopus' class="logo" ismap)   
+    .menu
+      details
+        summary
+          img#burger.icon(src='/public/img/menu.png')
+        details-menu.dropdown-menu
+          if !authorised 
+            li
+              a.dropdown_item(href='/#{username}') 
+                | Signed in as 
+                b #{username}
+            hr
+            li
+              a.dropdown_item(href='/#{username}') Your profile
+            li
+              a.dropdown_item(href='/#{username}?tab=repositories') Your repositories
+            hr
+            li
+              a.dropdown_item(href='/logout') Выйти
+          else
+            li
+              a.dropdown_item(href='/sign_In') Войти
+            li
+              a.dropdown_item(href='/register') Регистрация
+  hr.onfullwidth.no_vertical_margin
 
