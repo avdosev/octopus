@@ -17,6 +17,11 @@ const mail = {
     password: process.env.MAIL_PASSWORD
 }
 
+const services = [ // ето должон быть массив
+    'github',
+    'bitbucket',
+]
+
 module.exports = {
     port,
     url,
@@ -24,5 +29,6 @@ module.exports = {
     imgDir,
     secretKey,
     production,
-    mail
+    mail,
+    services,
 };

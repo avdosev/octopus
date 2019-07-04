@@ -52,7 +52,7 @@ class GithubController {
 
     async createRepo({name, description, files}) {
         try {
-            await this.local_auth.getUser().createRepo({name, description, files})
+            await getUser().createRepo({name, description, files})
         } catch (error) {
             throw error.response.data;
         }
@@ -61,6 +61,14 @@ class GithubController {
     async deleteRepo(reponame) {
         try {
             await this.local_auth.getRepo(this.user.username, reponame).deleteRepo()
+        } catch (err) {
+            throw err.response.data
+        }
+    }
+
+    async getProfile(username = null) {
+        try {
+            return (await this.getUser(username).getProfile()).data
         } catch (err) {
             throw err.response.data
         }
