@@ -13,7 +13,6 @@ const validators = {
     signIn: {
         emailNotExisted: 'Такого емейла не существует',
         incorrectPassword: 'Неправильный пароль.'
-
     }
 }
 

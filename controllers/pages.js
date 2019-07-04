@@ -9,5 +9,6 @@ const profile =  async (req, res) => {
 }
 
 module.exports = {
-    ...objWithPagesMiddleware
+    ...objWithPagesMiddleware,
+    profile
 }
