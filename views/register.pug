@@ -16,19 +16,19 @@ html(lang="ru")
         .inputForm
           H2 Регистрация
           div.reg(name="register")
+            mixin inputblock(name, pattern)
+              input(id=name, type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
+              span(id=`${name}Error` aria-live="polite")
             p Email
-            input#email(type='email', name='email', placeholder='Type email', required='required', pattern='.+@.+\\..+')
-            <span id="emailError" aria-live="polite"></span>
+            +inputblock('email', '.+@.+\\..+')
             p Login
-            input#login(type='login', name='login', placeholder='Type login', required='required', pattern='^\\w{3,20}$')
-            <span id="loginError" aria-live="polite"></span>
+            +inputblock('login', '^\\w{3,20}$')
             p Password
-            input#password(type='password', name='password', placeholder='Type password', required='required', pattern='.{5,50}')
-            <span id="passwordError" aria-live="polite"></span>
+            +inputblock('password', '.{5,50}')
             p Retype password
             input#repassword(type="password" name='repassword', placeholder="Retype password" required )
             <span id="repasswordError" aria-live="polite"></span>
-            button#submit(type="submit" class="welcome") Зарегистрироваться
+            button#submit(class="welcome") Зарегистрироваться
             <span id="serverError" aria-live="polite"></span>
 
 

@@ -10,14 +10,12 @@ header
         details-menu.dropdown-menu
           if authorised 
             li
-              a.dropdown_item(href='/#{username}') 
+              a.dropdown_item(href='/') 
                 | Signed in as 
                 b #{username}
             hr
             li
-              a.dropdown_item(href='/#{username}') Your profile
-            li
-              a.dropdown_item(href='/#{username}?tab=repositories') Your repositories
+              a.dropdown_item(href=`/git/${username}`) Your profile
             hr
             li
               form(action="/api/logout", method="post")

@@ -5,6 +5,8 @@
 
 @import url('./modules/colors.css');
 
+/*--- UNIVERSAL ---*/
+
 body {
     background: var(--main-white-color);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -23,6 +25,12 @@ main {
     align-items: center;
 }
 
+@media screen and (max-width: 640px) {
+    .main_inner {
+        flex-direction: column;
+    }
+}
+
 a {
     text-decoration: none;
     color: var(--url-color);
@@ -32,6 +40,8 @@ button {
     border-style: none;
     padding: 0.3rem 1rem
 }
+
+/*--- HEADER ---*/
 
 header {
     display: flex;

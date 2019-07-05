@@ -13,8 +13,10 @@ const profile =  async (req, res) => {
 }
 
 const main = async (req, res) => {
+    const repositories = []
     res.render('main', {
-        authorised: req.isAuthenticated()
+        authorised: req.isAuthenticated(),
+        repositories
     })
 };
 

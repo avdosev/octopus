@@ -5,6 +5,16 @@ html(lang="ru")
     body
         include modules/header
         main
-            .repositories_block
-            .main_info
-            .account_block
+            .main_inner
+                aside.repositories_block
+                    b 
+                        | Репозитории:
+                        a#create_new_repo(href='/creating_repo') создать новый
+                    if !repositories || !repositories.length
+                        p тут ничего нет
+                    else 
+                        -for(let i = 0; i < repositories.length; i++) {
+                        - 
+                        -}
+                .main_info
+                .account_block

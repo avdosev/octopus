@@ -26,10 +26,10 @@ const initControllers = (app, passport) => {
     app.get('/register', Response.renderPage.register);
     app.get('/signin', Response.renderPage.signin);
     
-    app.get('/:user', Response.renderPage.profile)
-    app.get('/:user/:repo', Response.renderPage.repo)
-    app.get('/:user/:repo/tree/:branch', Response.renderPage.treeOfRepo)
-    app.get('/:user/:repo/commits/:branch', Response.renderPage.commitsOfRepo)
+    app.get('/git/:user', Response.renderPage.profile)
+    app.get('/git/:user/:repo', Response.renderPage.repo)
+    app.get('/git/:user/:repo/tree/:branch', Response.renderPage.treeOfRepo)
+    app.get('/git/:user/:repo/commits/:branch', Response.renderPage.commitsOfRepo)
     
     // -- (L)USERS API --
     
