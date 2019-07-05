@@ -1,0 +1,15 @@
+html(lang="ru")
+    head
+        include modules/meta
+        link(rel="stylesheet", href="/public/css/style.css")
+    body
+        include modules/header
+        main
+            .main_inner
+                .vubor
+                    H2 для работы требуется аккаунт, войди или выйди
+                    .space_beetwen_inner
+                        a(href="/signin")
+                            h3 Войти
+                        a(href="/register") 
+                            h3 Регистрация
