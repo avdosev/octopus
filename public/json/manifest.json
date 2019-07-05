@@ -1,6 +1,6 @@
 {
-    "name": "Metida",
-    "short_name": "Metida",
+    "name": "Octobucket",
+    "short_name": "Octobucket",
     "icons": [
         {
             "src": "/public/img/app_icon/logo64.png",
@@ -26,5 +26,5 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "#f7f7f7",
-    "theme_color": "#393939"
+    "theme_color": "#9166cb"
 }

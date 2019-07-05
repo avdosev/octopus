@@ -32,7 +32,8 @@ const treeOfRepo = async (req, res) => {
 
 const commitsOfRepo = async (req, res) => {
     res.render('commitsOfRepo', {
-        authorised: req.isAuthenticated()
+        authorised: req.isAuthenticated(),
+        title: 'Commits'
     })
 }
 
