@@ -20,7 +20,7 @@ const { isLoggedIn, loggedCheker } = require('../controllers/logged.js');
 const initControllers = (app, passport) => {
     //парсим херню
     app.use(bodyParser.urlencoded({ extended: true }))
-    app.use('/api/*', bodyParser.json())
+    app.use(bodyParser.json())
 
     // -- STATIC FILES
 

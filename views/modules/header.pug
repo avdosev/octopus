@@ -8,7 +8,7 @@ header
         summary
           img#burger.icon(src='/public/img/menu.png')
         details-menu.dropdown-menu
-          if !authorised 
+          if authorised 
             li
               a.dropdown_item(href='/#{username}') 
                 | Signed in as 
@@ -23,7 +23,7 @@ header
               a.dropdown_item(href='/logout') Выйти
           else
             li
-              a.dropdown_item(href='/sign_In') Войти
+              a.dropdown_item(href='/signin') Войти
             li
               a.dropdown_item(href='/register') Регистрация
   hr.onfullwidth.no_vertical_margin

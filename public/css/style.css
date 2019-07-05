@@ -13,6 +13,16 @@ body {
     font-size: 16px;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.main_inner {
+    display: flex;
+    align-items: center;
+}
+
 a {
     text-decoration: none;
     color: var(--url-color);
