@@ -22,7 +22,7 @@ const initControllers = (app, passport) => {
     
     // -- PAGES --
 
-    app.get('/', Response.renderPage.main);
+    app.get('/', isLoggedIn, Response.renderPage.main);
     app.get('/register', Response.renderPage.register);
     app.get('/signin', Response.renderPage.signin);
     

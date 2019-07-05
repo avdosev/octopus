@@ -31,6 +31,11 @@ main {
     }
 }
 
+.space_beetwen_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
 a {
     text-decoration: none;
     color: var(--url-color);

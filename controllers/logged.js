@@ -1,7 +1,7 @@
 function isLoggedIn(req, res, next) {
     //топовая проверка на допуск юзера до страницы 
     if (req.isAuthenticated()) return next();
-    res.redirect('/signin');
+    res.render('start_page');
 }
 
 function loggedCheker(req, res, next) {
