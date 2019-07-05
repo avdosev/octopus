@@ -47,10 +47,12 @@ async function registrationUser(req, email, password, done) {
             throw new Error(validators.register.userNotCreated);
         }
 
+        done(null, newUser); //все ок
+        
+        // Отправка активации на почту
         const text = config.messages.activation
         mailer(email, "Confirm this email", text)
 
-        done(null, newUser); //все ок
         
     } catch (err) {
         res.statusCode = 406;

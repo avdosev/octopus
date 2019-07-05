@@ -97,6 +97,10 @@ details summary::-webkit-details-marker {
     display: none
 }
 
+details-menu form {
+    margin: 0;
+}
+
 .dropdown_item {
     color: #24292e;
     display: block;
@@ -104,6 +108,15 @@ details summary::-webkit-details-marker {
     padding: 4px 10px 4px 16px;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    background: none;
+    border: 0;
+    font-size: .875rem;
+    outline: none;
+
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
 }
 
 .no_vertical_margin {

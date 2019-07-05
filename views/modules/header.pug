@@ -20,7 +20,8 @@ header
               a.dropdown_item(href='/#{username}?tab=repositories') Your repositories
             hr
             li
-              a.dropdown_item(href='/logout') Выйти
+              form(action="/api/logout", method="post")
+                button(type="submit").dropdown_item Выйти
           else
             li
               a.dropdown_item(href='/signin') Войти
