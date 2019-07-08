@@ -1,6 +1,6 @@
 @import url('./placeholder.css');
 
-.reg {
+.inputForm {
     display: flex;
     flex-direction: column;
     width: 20rem;

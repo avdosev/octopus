@@ -2,14 +2,13 @@ html(lang="ru")
     head
         include modules/meta
         link(rel="stylesheet", href="/public/css/style.css")
+        link(rel="stylesheet", href="/public/css/modules/input.css")
     body
         include modules/header
         main
             .main_inner
                 aside.repositories_block
-                    b 
-                        | Репозитории:
-                        a#create_new_repo(href='/creating_repo') создать новый
+                    H3 Репозитории:
                     if !repositories || !repositories.length
                         p тут ничего нет
                     else 
@@ -18,5 +17,26 @@ html(lang="ru")
                         .repo
                             a.repo_url(href=elem.html_url) #{elem.name}
                         -}
+                    a#create_new_repo(href='/creating_repo') создать новый
                 .main_info
                 .account_block
+                    H3 Аккаунты:
+                    if !accounts || !accounts.length
+                        p аккаунты не найдены, попробуйте добавить
+                    else 
+                        -for(let i = 0; i < accounts.length; i++) {
+                        -   const elem = accountss[i];
+                        .account
+                            | тут типо аккаунт
+                        -}
+                    details
+                        summary
+                            | Добавить аккаунт
+                        details-menu
+                            form(action="").inputForm
+                                mixin inputblock(name, pattern)
+                                    p #{name}:
+                                    input(type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
+                                +inputblock('username', '\\w+')
+                                +inputblock('password', '\\w+')
+                                input(type='submit' value="Добавить").welcome

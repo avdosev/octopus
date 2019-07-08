@@ -15,7 +15,7 @@ html(lang="ru")
       .main_inner
         .inputForm 
           H2 Вхождение
-          div.reg
+          div.inputForm
             mixin inputblock(name, pattern)
               input(id=name, type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
               span(id=`${name}Error` aria-live="polite")

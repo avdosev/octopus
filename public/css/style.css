@@ -22,7 +22,10 @@ main {
 
 .main_inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    width: 1024px;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
 
 @media screen and (max-width: 640px) {
@@ -60,6 +63,11 @@ header {
 
 .onfullwidth {
     width: 100%;
+}
+
+.no_horizontal_border {
+    border-left-width: 0px;
+    border-right-width: 0px;
 }
 
 .header_inner {
@@ -106,9 +114,10 @@ div.logo {
 
 details summary {
     outline: none;
+    cursor: pointer;
 }
 
-details summary::-webkit-details-marker {
+.not_details_marker::-webkit-details-marker {
     display: none
 }
 
@@ -137,4 +146,19 @@ details-menu form {
 .no_vertical_margin {
     margin-bottom: 0px;
     margin-top: 0px;
+}
+
+.repositories_block,
+.main_info,
+.account_block {
+    min-width: 25%;
+    max-width: 30%;
+}
+
+@media screen and (max-width: 640px) {
+    .repositories_block,
+    .main_info,
+    .account_block {
+        max-width: 100%;
+    }
 }

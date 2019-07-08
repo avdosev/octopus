@@ -5,7 +5,7 @@ header
         img(src="/public/img/octopus.png" alt='octopus' class="logo" ismap)   
     .menu
       details
-        summary
+        summary.not_details_marker
           img#burger.icon(src='/public/img/menu.png')
         details-menu.dropdown-menu
           if authorised 
@@ -25,5 +25,5 @@ header
               a.dropdown_item(href='/signin') Войти
             li
               a.dropdown_item(href='/register') Регистрация
-  hr.onfullwidth.no_vertical_margin
+  hr.onfullwidth.no_vertical_margin.no_horizontal_border
 

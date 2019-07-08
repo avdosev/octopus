@@ -4,18 +4,20 @@ const { typeauth } = require('./const_for_class')
 class GithubController {
     constructor({token, username, password}) {
         this.token = token;
+        // тут вызывается геттер 
+        // так що не исправляй, так и задумывалось, наверно
         this.user = {username, password}
     }
 
     set user({username, password, token}) {
-        this.user = {
+        this._user = {
             username, password, token
         }
         this.auth()
     }
 
     get user() {
-        return this.user
+        return this._user
     }
 
     auth() {

@@ -9,6 +9,7 @@ class GitController {
         this._accounts = {};
     }
     
+    // нужно для правильной инициализации фабрикой
     async init() {
         const accs = await gitAccounts.getAllAccountsByUser(this._id)
         this._accounts = accs.reduce((acc, cur) => {
@@ -24,9 +25,9 @@ class GitController {
         return this.controll;
     }
 
-    async setCurrentAccount(newAccountId) {
+    async setCurrentControll(newAccountId) {
         const acc = this._accounts[newAccountId]
-        this.controll = createControllerByService(acc.account_type, acc)
+        this.controll = await createControllerByService(acc.account_type, acc)
         return this.controll;
     }
 
@@ -44,7 +45,8 @@ async function createControllerByService(service, params) {
         'bitbucket': Bitbucket
     }
     const newController = conformity[service];
-    return new newController(params);
+    const controller = new newController(params);
+    return controller;
 }
 
 module.exports = GitController;
