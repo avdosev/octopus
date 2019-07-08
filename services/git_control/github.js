@@ -8,14 +8,14 @@ class GithubController {
     }
 
     set user({username, password, token}) {
-        this._user = {
+        this.user = {
             username, password, token
         }
         this.auth()
     }
 
     get user() {
-        return this._user
+        return this.user
     }
 
     auth() {

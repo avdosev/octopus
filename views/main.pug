@@ -14,7 +14,9 @@ html(lang="ru")
                         p тут ничего нет
                     else 
                         -for(let i = 0; i < repositories.length; i++) {
-                        - 
+                        -   const elem = repositories[i];
+                        .repo
+                            a.repo_url(href=elem.html_url) #{elem.name}
                         -}
                 .main_info
                 .account_block
