@@ -9,7 +9,7 @@ const Debug = require('../controllers/debug');
 
 //  проверка логирования
 const { isLoggedIn, loggedCheker } = require('../controllers/logged.js');
-const user_api = require('./user_api')
+const api = require('./api')
 
 const initControllers = (app, passport) => {
     //парсим херню
@@ -33,7 +33,7 @@ const initControllers = (app, passport) => {
     
     // -- (L)USERS API --
     
-    app.use('/api', user_api(passport));
+    app.use('/api', api(passport));
 
     //-- ERROR PAGE --
     app.use((err, req, res, next) => {

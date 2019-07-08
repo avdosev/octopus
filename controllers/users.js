@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator/check');
 const mailer = require("../services/email")
 const UserApi = require("../services/user")
 const config = require('../config')
-
+const git = require('../services/git_control')
 const validators = {
     register: {
         validationFailed: 'Валидация не пройдена',
@@ -40,18 +40,22 @@ async function registrationUser(req, email, password, done) {
         
         const userPassword = generateHash(password); // зашифрованный
         const username = req.body.login
-
+        
         const newUser = await UserApi.createUser(email, username, userPassword)
         
         if (!newUser) {
             throw new Error(validators.register.userNotCreated);
         }
+        
+        const gitControll = git.bilderGitController(newUser.id)
+        newUser.gitControll = gitControll;
 
+        
         done(null, newUser); //все ок
         
         // Отправка активации на почту
-        const text = config.messages.activation
-        mailer(email, "Confirm this email", text)
+        // const text = config.messages.activation
+        // mailer(email, "Confirm this email", text)
 
         
     } catch (err) {
@@ -79,6 +83,7 @@ async function signinUser(req, email, password, next) { //некст нас не
         }
 
         const userinfo = user.get();
+        userinfo.gitControll = await git.bilderGitController(userinfo.id)
         
         next(null, userinfo);
 
@@ -99,9 +104,17 @@ const loadPasportStrategies = (passport, user) => {
     // для логаута (камингаута)
     passport.deserializeUser((id, done) => {
         //находим юзера
+        // z t,fk ...
         UserApi.getUserById(id).then(user => {
-            done(null, user.get()); //нашли
+            const _user = user.get()
+            return git.bilderGitController(_user.id).then(gitControll => {
+                _user.gitControll = gitControll
+                return _user
+            })
+        }).then(user => {
+            done(null, user); //нашли
         }).catch(err => {
+            console.log(err)
             done('not found', null); //не нашли
         });
     });

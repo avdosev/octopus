@@ -1,4 +1,5 @@
 const consts = require('./const_for_class')
+const GitController = require('./controller')
 
 // -- строительная фабрика --
 async function bilderGitController(id_user) {

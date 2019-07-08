@@ -34,5 +34,12 @@ module.exports = (passport) => {
         })
     );
 
+    router.post('/new_account', (req, res, next) => {
+        req.user.gitControll.addAccount(req.body)
+        next()
+    }, (req, res) => {
+        res.redirect('/')
+    })
+
     return router
 }

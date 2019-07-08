@@ -13,11 +13,15 @@ class GitController {
     async init() {
         const accs = await gitAccounts.getAllAccountsByUser(this._id)
         this._accounts = accs.reduce((acc, cur) => {
-            acc[cur.id] = cur;
+            acc[cur.id] = cur.dataValues;
+            return acc;
         }, this._accounts)
+        if (this._accounts) {
+            await this.setCurrentControll(Object.keys(this._accounts)[0])
+        }
     }
 
-    accounts() {
+    get accounts() {
         return this._accounts
     }
 
@@ -31,7 +35,7 @@ class GitController {
         return this.controll;
     }
 
-    async addAccount(account_type, username, password) {
+    async addAccount({account_type, username, password}) {
         const new_acc = await gitAccounts.createAccount(this._id, account_type, username, password)
         this._accounts[new_acc.id] = new_acc;
         return new_acc

@@ -13,10 +13,17 @@ const profile =  async (req, res) => {
 }
 
 const main = async (req, res) => {
-    const repositories = []
+    const gitController = req.user.gitControll
+    const controller = gitController.getCurrentControll();
+
+    const repositories = (controller &&  await controller.getListRepos()) || []
+    const accounts = gitController.accounts || {}
+    console.log(accounts)
     res.render('main', {
         authorised: req.isAuthenticated(),
-        repositories
+        repositories,
+        accounts,
+        username: controller ? controller.user.username : ''
     })
 };
 

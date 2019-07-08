@@ -21,22 +21,28 @@ html(lang="ru")
                 .main_info
                 .account_block
                     H3 Аккаунты:
-                    if !accounts || !accounts.length
+                    if !accounts || !Object.keys(accounts).length
                         p аккаунты не найдены, попробуйте добавить
                     else 
-                        -for(let i = 0; i < accounts.length; i++) {
-                        -   const elem = accountss[i];
-                        .account
-                            | тут типо аккаунт
-                        -}
+                        each account in accounts
+                            a.account
+                                b= account.account_type
+                                | 
+                                b= account.username
                     details
                         summary
                             | Добавить аккаунт
                         details-menu
-                            form(action="").inputForm
+                            form(action="/api/new_account" method="post").inputForm
                                 mixin inputblock(name, pattern)
                                     p #{name}:
                                     input(type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
                                 +inputblock('username', '\\w+')
                                 +inputblock('password', '\\w+')
+                                p
+                                    input(type="radio" name="account_type" value="github" id='github_radio') 
+                                    label(for="github_radio") Github
+                                    input(type="radio" name="account_type" value="bitbucket" id='bitbucket_radio') 
+                                    label(for="bitbucket_radio") Bitbucket
+                                    
                                 input(type='submit' value="Добавить").welcome
