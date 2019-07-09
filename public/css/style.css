@@ -152,7 +152,14 @@ details-menu form {
 .main_info,
 .account_block {
     min-width: 25%;
-    max-width: 30%;
+    /* max-width: 30%; */
+}
+
+.account_block {
+    
+    display: flex;
+    flex-direction: column;
+    
 }
 
 @media screen and (max-width: 640px) {
@@ -161,4 +168,20 @@ details-menu form {
     .account_block {
         max-width: 100%;
     }
+}
+
+#create_new_repo {
+    border: 1px solid rgb(15, 118, 222);
+    border-radius: .25em;
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: white;
+}
+
+.repo {
+    margin-bottom: 0.5rem;
+}
+
+.account {
+    cursor: pointer;
 }

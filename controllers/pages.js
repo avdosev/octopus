@@ -18,7 +18,7 @@ const main = async (req, res) => {
 
     const repositories = (controller &&  await controller.getListRepos()) || []
     const accounts = gitController.accounts || {}
-    console.log(accounts)
+    
     res.render('main', {
         authorised: req.isAuthenticated(),
         repositories,

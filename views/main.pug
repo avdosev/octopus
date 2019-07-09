@@ -3,6 +3,7 @@ html(lang="ru")
         include modules/meta
         link(rel="stylesheet", href="/public/css/style.css")
         link(rel="stylesheet", href="/public/css/modules/input.css")
+        script(src="/public/js/main.js")
     body
         include modules/header
         main
@@ -25,7 +26,7 @@ html(lang="ru")
                         p аккаунты не найдены, попробуйте добавить
                     else 
                         each account in accounts
-                            a.account
+                            span.account(data=`${account.id}`)
                                 b= account.account_type
                                 | 
                                 b= account.username

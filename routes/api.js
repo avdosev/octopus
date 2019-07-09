@@ -42,5 +42,16 @@ module.exports = (passport) => {
         res.redirect('/')
     })
 
+    router.post('/swap_account', async (req, res, next) => {
+        const new_id = req.body.new_id
+        console.log("newid: ",new_id)
+        try {
+            await req.user.gitControll.setCurrentControll(new_id)
+        } catch (err) {
+            console.log(err)
+        }
+        res.send('ok')
+    })
+
     return router
 }
