@@ -2,6 +2,7 @@ const Github = require('./github')
 const Bitbucket = require('./bitbucket')
 
 const gitAccounts = require('../git_accounts')
+const User = require('../user')
 
 class GitController {
     constructor(id_user) {
@@ -10,14 +11,14 @@ class GitController {
     }
     
     // нужно для правильной инициализации фабрикой
-    async init() {
+    async init(currentAccount) {
         const accs = await gitAccounts.getAllAccountsByUser(this._id)
         this._accounts = accs.reduce((acc, cur) => {
             acc[cur.id] = cur.dataValues;
             return acc;
         }, this._accounts)
         if (Object.keys(this._accounts).length) {
-            await this.setCurrentControll(Object.keys(this._accounts)[0])
+            await this.setCurrentControll(currentAccount)
         } else {
             this.controll = null
         }
@@ -33,6 +34,7 @@ class GitController {
 
     async setCurrentControll(newAccountId) {
         const acc = this._accounts[newAccountId]
+        await User.changeCurrentAccoutn(this._id, typeof newAccountId == 'number' ? newAccountId : null)
         this.controll = await createControllerByService(acc.account_type, acc)
         return this.controll;
     }

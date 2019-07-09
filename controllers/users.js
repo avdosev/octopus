@@ -47,7 +47,7 @@ async function registrationUser(req, email, password, done) {
             throw new Error(validators.register.userNotCreated);
         }
         
-        const gitControll = git.bilderGitController(newUser.id)
+        const gitControll = git.bilderGitController(newUser)
         newUser.gitControll = gitControll;
 
         
@@ -83,7 +83,7 @@ async function signinUser(req, email, password, next) { //некст нас не
         }
 
         const userinfo = user.get();
-        userinfo.gitControll = await git.bilderGitController(userinfo.id)
+        userinfo.gitControll = await git.bilderGitController(userinfo)
         
         next(null, userinfo);
 
@@ -107,7 +107,7 @@ const loadPasportStrategies = (passport, user) => {
         // z t,fk ...
         UserApi.getUserById(id).then(user => {
             const _user = user.get()
-            return git.bilderGitController(_user.id).then(gitControll => {
+            return git.bilderGitController(_user).then(gitControll => {
                 _user.gitControll = gitControll
                 return _user
             })

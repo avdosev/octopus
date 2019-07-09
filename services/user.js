@@ -24,10 +24,22 @@ function createUser(email, username, password) {
     })
 }
 
+function changeCurrentAccoutn(id, newCurrent) {
+    return User.update({
+        current_account: newCurrent
+    },{
+        where: {
+            id
+        },
+
+    })
+}
+
 module.exports = {
     createUser,
     getUserById,
-    getUserByEmail
+    getUserByEmail,
+    changeCurrentAccoutn,
 }
 
 

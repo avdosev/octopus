@@ -38,8 +38,8 @@ html(lang="ru")
                                 mixin inputblock(name, pattern)
                                     p #{name}:
                                     input(type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
-                                +inputblock('username', '\\w+')
-                                +inputblock('password', '\\w+')
+                                +inputblock('username', '.+')
+                                +inputblock('password', '.+')
                                 p
                                     input(type="radio" name="account_type" value="github" id='github_radio') 
                                     label(for="github_radio") Github
