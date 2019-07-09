@@ -16,8 +16,10 @@ class GitController {
             acc[cur.id] = cur.dataValues;
             return acc;
         }, this._accounts)
-        if (this._accounts) {
+        if (Object.keys(this._accounts).length) {
             await this.setCurrentControll(Object.keys(this._accounts)[0])
+        } else {
+            this.controll = null
         }
     }
 
@@ -38,6 +40,13 @@ class GitController {
     async addAccount({account_type, username, password}) {
         const new_acc = await gitAccounts.createAccount(this._id, account_type, username, password)
         this._accounts[new_acc.id] = new_acc;
+
+        // по идее не правильно забубенивать бизнес логику сюда но мне пох, дедлайн близок
+
+        // если до этого контроллера не было
+        if (Object.keys(this._accounts).length == 1) {
+            await this.setCurrentControll(new_acc.id)
+        }
         return new_acc
     }
     

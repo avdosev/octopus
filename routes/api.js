@@ -12,6 +12,7 @@ module.exports = (passport) => {
         (req, res) => {
             req.session.destroy(err => {
                 res.redirect('/');
+                console.log(err)
             })
         }
     );
