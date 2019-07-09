@@ -46,6 +46,21 @@ const commitsOfRepo = async (req, res) => {
     })
 }
 
+const createRepo = async (req, res) => {
+
+    const gitController = req.user.gitControll
+    const controller = gitController.getCurrentControll();
+
+    const accounts = gitController.accounts || {}
+    
+    res.render('create_repo', {
+        authorised: req.isAuthenticated(),
+        title: 'Создание репозитория', 
+        username: controller ? controller.user.username : '',
+        accounts
+    })
+}
+
 
 module.exports = {
     ...objWithPagesMiddleware,
@@ -54,4 +69,5 @@ module.exports = {
     repo,
     treeOfRepo,
     commitsOfRepo,
+    createRepo
 }

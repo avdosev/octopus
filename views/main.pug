@@ -15,7 +15,7 @@ html(lang="ru")
                     else 
                         -for(let i = 0; i < repositories.length; i++) {
                         -   const elem = repositories[i];
-                        .repo
+                        .repo()
                             a.repo_url(href=elem.html_url) #{elem.name}
                         -}
                     a#create_new_repo(href='/creating_repo') создать новый
