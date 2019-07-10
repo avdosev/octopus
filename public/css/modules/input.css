@@ -37,7 +37,6 @@ p {
 
 .welcome {
     outline: none;
-    margin-top: 1.5rem;
     border: 1px solid black;
     background: rgba(255, 255, 255, 0.1);
     transition: 0.7s;
@@ -45,7 +44,9 @@ p {
     font-family: 'Montserrat', sans-serif;
     color: var(--main-back-color);
     padding: 0.3rem 1rem;
+    cursor: pointer;
 }
+
 
 /* Тут хочу сделать разные цвета кнопки для верных и неверных значений, проблема в том, что я хз как передать на кнопку результат */
 /* #submit:invalid:hover{

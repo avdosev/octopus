@@ -1,7 +1,7 @@
 function isLoggedIn(req, res, next) {
     //топовая проверка на допуск юзера до страницы 
     if (req.isAuthenticated()) return next();
-    res.render('start_page');
+    res.render('start_page', { title: 'Octobucket'});
 }
 
 function loggedCheker(req, res, next) {

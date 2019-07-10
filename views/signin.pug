@@ -13,7 +13,7 @@ html(lang="ru")
     include modules/header 
     main
       .main_inner
-        .inputForm 
+        .inputForm.white_block 
           H2 Вхождение
           div.inputForm
             mixin inputblock(name, pattern)
@@ -23,7 +23,7 @@ html(lang="ru")
             +inputblock('email', '.+@.+\\..+')
             p Password
             +inputblock('password', '.{5,50}')
-            button#submit(class="welcome") Войти
+            button#submit(class="welcome with_top_margin with_bottom_margin") Войти
             <span id="serverError" aria-live="polite"></span>
 
 

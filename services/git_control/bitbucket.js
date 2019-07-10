@@ -87,13 +87,25 @@ class Bitbucket {
     }
 
     async getProfile(username = null) {
+        let res = {}
         try {
             // TODO
-            return {}
-            //return (await this.getUser(username).getProfile()).data
+            if (!username) {
+                res = await this.bitbucket.users.getAuthedUser()
+            } else {
+                // todu
+            }
+            res = res.data
+            res = {
+                username: res.username,
+                avatar_url: res.links.avatar.href,
+                // пока больше не нужно
+            }
         } catch (err) {
-            throw err.response.data
+            console.log(err)
+            throw err.response
         }
+        return res;
     }
 }
 

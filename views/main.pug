@@ -8,7 +8,7 @@ html(lang="ru")
         include modules/header
         main
             .main_inner
-                aside.repositories_block
+                aside.repositories_block.white_block
                     H3 Репозитории:
                     if !repositories || !repositories.length
                         p тут ничего нет
@@ -19,9 +19,13 @@ html(lang="ru")
                             a.repo_url(href=elem.html_url) #{elem.name}
                             img(src="/public/img/remove.svg", alt="remove", title="удалить").removeBtn
                         -}
-                    a#create_new_repo(href='/creating_repo') создать новый
+                    a#create_new_repo.whiteBtn(href='/creating_repo') создать новый
                 //- .main_info
-                .account_block
+                .account_block.white_block
+                    if profile
+                        .avatar_block.with_top_margin.green_border
+                            img(src=profile.avatar_url, alt=username, width="160px").avatar
+                            b #{username}
                     H3 Аккаунты:
                     if !accounts || !Object.keys(accounts).length
                         p аккаунты не найдены, попробуйте добавить

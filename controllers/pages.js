@@ -19,14 +19,16 @@ const main = async (req, res) => {
     const controller = gitController.getCurrentControll();
 
     const repositories = (controller &&  await controller.getListRepos()) || []
+    const profile = (controller && await controller.getProfile()) || null
     const accounts = gitController.accounts || {}
-    
+    console.log(profile)
     res.render('main', {
         authorised: req.isAuthenticated(),
         repositories,
         accounts,
         username: controller ? controller.user.username : '',
-        title: 'Octobucket'
+        title: 'Octobucket',
+        profile
     })
 };
 

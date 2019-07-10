@@ -13,7 +13,7 @@ html(lang="ru")
     include modules/header 
     main
       .main_inner
-        .inputForm
+        .inputForm.white_block
           H2 Регистрация
           div.inputForm(name="register")
             mixin inputblock(name, pattern)
@@ -28,7 +28,7 @@ html(lang="ru")
             p Retype password
             input#repassword(type="password" name='repassword', placeholder="Retype password" required )
             <span id="repasswordError" aria-live="polite"></span>
-            button#submit(class="welcome") Зарегистрироваться
+            button#submit(class="welcome  with_top_margin with_bottom_margin") Зарегистрироваться
             <span id="serverError" aria-live="polite"></span>
 
 
