@@ -15,8 +15,9 @@ html(lang="ru")
                     else 
                         -for(let i = 0; i < repositories.length; i++) {
                         -   const elem = repositories[i];
-                        .repo()
+                        .repo(repo-name=`${elem.name}`)
                             a.repo_url(href=elem.html_url) #{elem.name}
+                            img(src="/public/img/remove.svg", alt="remove", title="удалить").removeBtn
                         -}
                     a#create_new_repo(href='/creating_repo') создать новый
                 .main_info

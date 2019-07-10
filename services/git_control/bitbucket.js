@@ -39,13 +39,22 @@ class Bitbucket {
         }
 
         try {
-            res = await this.bitbucket.repositories(username || this.user.username)
+            res = await this.bitbucket.repositories.list({username: username || this.user.username})
             // todo parse response
         } catch (error) {
             console.log(error);
         }
-
-        return res.data;
+        
+        res = res.data.values.reduce((acc, cur) => {
+            const str = cur.links.html.href
+            let item = {
+                name: cur.name,
+                html_url: str.substring(str.indexOf('bitbucket.org')+'bitbucket.org'.length)
+            }
+            acc.push(item)
+            return acc;
+        }, [])
+        return res;
     }
 
     getUser(username = null) {

@@ -45,7 +45,16 @@ class GithubController {
             console.log(error);
         }
 
-        return res.data;
+        res = res.data.reduce((acc, cur) => {
+            const str = cur.html_url
+            let item = {
+                name: cur.name,
+                html_url: str.substring(str.indexOf('github.com')+'github.com'.length)
+            }
+            acc.push(item)
+            return acc;
+        }, [])
+        return res;
     }
 
     getUser(username = null) {
