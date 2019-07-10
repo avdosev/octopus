@@ -44,12 +44,17 @@ class GithubController {
         } catch (error) {
             console.log(error);
         }
+        try { console.log('data from github', res.data[0]) } catch {}
 
         res = res.data.reduce((acc, cur) => {
             const str = cur.html_url
+            
             let item = {
                 name: cur.name,
-                html_url: str.substring(str.indexOf('github.com')+'github.com'.length)
+                html_url: str.substring(str.indexOf('github.com')+'github.com'.length),
+                repo_indent: cur.name,
+                account_indent: cur.full_name.substring(0, cur.full_name.indexOf('/'))
+                
             }
             acc.push(item)
             return acc;
@@ -68,10 +73,10 @@ class GithubController {
             throw error.response.data;
         }
     }
-
-    async deleteRepo(reponame) {
+    
+    async deleteRepo(repo_indent, account_indent) {
         try {
-            await this.local_auth.getRepo(this.user.username, reponame).deleteRepo()
+            await this.local_auth.getRepo(account_indent, repo_indent).deleteRepo()
         } catch (err) {
             throw err.response.data
         }

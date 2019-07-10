@@ -64,9 +64,9 @@ class Bitbucket {
         return this.user(username || this.user.username)
     }
 
-    async createRepo({name, description, files}) {
+    async createRepo({name, description}) {
         try {
-            await this.bitbucket.repositories.create({name, description, files})
+            await this.bitbucket.repositories.create({name, description})
         } catch (error) {
             throw error.response.data;
         }
