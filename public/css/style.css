@@ -111,6 +111,10 @@ div.logo {
     .dropdown-menu {
         right: 5px
     }
+
+    img.logo {
+        padding-left: 5px;
+    }
 }
 
 details summary {
@@ -182,6 +186,7 @@ details-menu form {
     .account_block {
         max-width: 500px;
         width: 80%;
+        min-width: 50%;
     }
 }
 
