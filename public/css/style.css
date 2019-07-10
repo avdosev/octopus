@@ -28,7 +28,7 @@ main {
     margin-top: 1rem;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 790px) {
     .main_inner {
         flex-direction: column;
         align-items: center;
@@ -157,7 +157,8 @@ details-menu form {
     border: 1px solid rgb(165, 162, 175);
     border-radius: .25rem;
     background: white;
-    margin-bottom: 1.25rem
+    margin-bottom: 1.25rem;
+    min-width: 330px;
 }
 
 .repositories_block {
@@ -175,11 +176,11 @@ details-menu form {
     
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 790px) {
     .repositories_block,
     .main_info,
     .account_block {
-        max-width: 100%;
+        max-width: 500px;
         width: 80%;
     }
 }
@@ -195,7 +196,7 @@ details-menu form {
 }
 
 .repo {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
