@@ -53,5 +53,17 @@ module.exports = (passport) => {
         res.send('ok')
     })
 
+    router.delete('/remove_repo', async (req, res, next) => {
+        const contrl = req.user.gitControll.getCurrentControll()
+        if (!contrl) {
+            res.send('none')
+            return;
+        }
+
+        await contrl.deleteRepo(req.body.repo_indent, req.body.account_indent)
+
+        res.send('ok')
+    })
+
     return router
 }
