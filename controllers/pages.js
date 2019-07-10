@@ -1,7 +1,9 @@
 // Для генерации однообразных функций
-const objWithPagesMiddleware = ['signin', 'register', 'error_page', 'not_found'].reduce((acc, cur) => {
+const titleForPages = ['Войти','Регистраци','Ошибка','Не найдено']
+const objWithPagesMiddleware = ['signin', 'register', 'error_page', 'not_found'].reduce((acc, cur, index) => {
     acc[cur] = (req, res) => { res.render(cur, {
-        authorised: req.isAuthenticated()
+        authorised: req.isAuthenticated(),
+        title: titleForPages[index]
     }) } // future middleware
     return acc
 }, {})
@@ -23,7 +25,8 @@ const main = async (req, res) => {
         authorised: req.isAuthenticated(),
         repositories,
         accounts,
-        username: controller ? controller.user.username : ''
+        username: controller ? controller.user.username : '',
+        title: 'Octobucket'
     })
 };
 
