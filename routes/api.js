@@ -65,5 +65,9 @@ module.exports = (passport) => {
         res.send('ok')
     })
 
+    router.post('/new_repo', async (req, res, next) => {
+        
+    })
+
     return router
 }

@@ -1,0 +1,26 @@
+html(lang="ru")
+    head
+        include modules/meta
+        link(rel="stylesheet", href="/public/css/style.css")
+        link(rel="stylesheet", href="/public/css/modules/input.css")
+    body
+        include modules/header
+        main
+            .main_inner
+                .inputForm 
+                    H2 Создать новый репозиторий
+                    form(action="", method="post").inputForm
+                        p Имя репозитория
+                        input(id=name, type=name, name=name, placeholder=`Type ${name}`, required='required', pattern=`${pattern}`)
+                        p Описание (не обязательно)
+                        hr
+                        div
+                            input#private(type="radio" name="public" value="false") 
+                            label(for="private") Приватный
+                            input#public(type="radio" name="public" value="true") 
+                            label(for="public") Публичный
+                        hr
+                        .space_betwen_inner
+                            button#submit(class="welcome") Создать
+                            a(href='/').welcome Отменить 
+                    

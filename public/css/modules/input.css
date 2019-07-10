@@ -3,7 +3,7 @@
 .inputForm {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    /* width: 20rem; */
     justify-content: space-between;
 }
 
@@ -43,6 +43,8 @@ p {
     transition: 0.7s;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
+    color: var(--main-back-color);
+    padding: 0.3rem 1rem;
 }
 
 /* Тут хочу сделать разные цвета кнопки для верных и неверных значений, проблема в том, что я хз как передать на кнопку результат */
