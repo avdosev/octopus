@@ -1,0 +1,29 @@
+html(lang="ru")
+    head
+        include modules/meta
+        link(rel="stylesheet", href="/public/css/style.css")
+        link(rel="stylesheet", href="/public/css/modules/input.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.min.js")
+        script(src="/public/js/main.js")
+    body
+        include modules/header
+        main
+            .main_inner.column_inner
+                .descriptiom
+                .files_in_repo.white_block
+                    for item in repo.files
+                        .file_item.green_border
+                            if item.type === 'file'
+                                img.file_item_icon(src='/public/img/icon/file.png', height="16")
+                            else
+                                img.file_item_icon(src='/public/img/icon/folder.png', height="16")
+                                
+                            a(href=item.html_url)
+                                =item.name
+
+                if repo.readme
+                    .readme.white_block
+                        .readme_title
+                            b README.md
+                            hr
+                            !=repo.readme
