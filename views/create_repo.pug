@@ -11,7 +11,7 @@ html(lang="ru")
                     H2 Создать новый репозиторий
                     form(action="api/create_repo", method="post").inputForm
                         p Имя репозитория
-                        input#name(type="text", name="name", placeholder=`Type name repos`, required='required', pattern='.+')
+                        input#name(type="text", name="name", placeholder=`Type name repos`, required='required', pattern='[a-z0-9\\-_\\.]+')
                         p Описание (не обязательно)
                         input#desription(type="text", patter=".*")
                         hr.onfullwidth
