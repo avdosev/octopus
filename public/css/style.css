@@ -107,7 +107,9 @@ div.logo {
     position: absolute;
 }
 
-@media screen and (max-width: 1024px) {
+/* так красивше */
+/* значения подбирались эмпирически */
+@media screen and (max-width: 1320px) { 
     .dropdown-menu {
         right: 5px
     }
@@ -227,6 +229,7 @@ details-menu form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-radius: .5rem;
 }
 
 .avatar {
