@@ -21,11 +21,26 @@ main {
 }
 
 .main_inner {
+    width: 1024px;
+    margin-top: 1rem;
+}
+
+.space_around_inner {
     display: flex;
     align-items: flex-start;
-    width: 1024px;
     justify-content: space-around;
-    margin-top: 1rem;
+}
+
+.column_inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.space_between_inner {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 790px) {
@@ -35,9 +50,10 @@ main {
     }
 }
 
-.space_between_inner {
-    display: flex;
-    justify-content: space-between;
+@media screen and (max-width: 1024px) {
+    .main_inner {
+        width: 95%;
+    }
 }
 
 a {
@@ -162,7 +178,6 @@ details-menu form {
 }
 
 .white_block {
-    max-width: 30%;
     padding: 5px 2% 13px 2%;
     border: 1px solid rgb(165, 162, 175);
     border-radius: .25rem;
@@ -243,4 +258,36 @@ details-menu form {
 
 .with_bottom_margin {
     margin-bottom: 1rem;
+}
+
+.files_in_repo,
+.readme {
+    width: 95%;
+}
+
+.readme_title {
+    padding: 12px;
+}
+
+.readme * {
+    max-width: 100%;
+}
+
+.readme pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+}
+
+.file_item {
+    padding: 10px 0px;
+    width: 100%;
+}
+
+.file_item_icon {
+    padding-left: 10px;
+    padding-right: 5px;
 }

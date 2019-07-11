@@ -1,5 +1,6 @@
 const github_api = require('github-api')
 const { typeauth } = require('./const_for_class')
+const {MarkdownToHtml} = require('../markdown')
 
 class GithubController {
     constructor({token, username, password}) {
@@ -87,6 +88,28 @@ class GithubController {
             return (await this.getUser(username).getProfile()).data
         } catch (err) {
             throw err.response.data
+        }
+    }
+
+    async getRepo(repo_indent, user_indent) {
+        const repo = this.local_auth.getRepo(user_indent, repo_indent)
+        // ррр
+        // так не робит
+        // const request = await Promise.all([repo.getContents() , repo.getReadme(undefined, true)]) 
+        const files = (await repo.getContents()).data
+
+        let readme = null
+        
+        try {
+            readme = (await repo.getReadme(undefined, true)).data
+            readme = MarkdownToHtml(readme)
+        } catch (error) {
+            console.log(error)
+        }
+
+        return {
+            files,
+            readme
         }
     }
 }

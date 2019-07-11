@@ -26,6 +26,8 @@ const initControllers = (app, passport) => {
     app.get('/register', Response.renderPage.register);
     app.get('/signin', Response.renderPage.signin);
     app.get('/creating_repo', isLoggedIn, Response.renderPage.createRepo);
+    
+    app.get('/git/*', isLoggedIn)
     app.get('/git/:user', Response.renderPage.profile)
     app.get('/git/:user/:repo', Response.renderPage.repo)
     app.get('/git/:user/:repo/tree/:branch', Response.renderPage.treeOfRepo)

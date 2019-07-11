@@ -7,7 +7,7 @@ html(lang="ru")
     body
         include modules/header
         main
-            .main_inner
+            .main_inner.space_around_inner
                 aside.repositories_block.white_block
                     H3 Репозитории:
                     if !repositories || !repositories.length
@@ -16,7 +16,7 @@ html(lang="ru")
                         -for(let i = 0; i < repositories.length; i++) {
                         -   const elem = repositories[i];
                         .repo(repo-indent=elem.repo_indent account-indent=elem.account_indent)
-                            a.repo_url(href=elem.html_url) #{elem.name}
+                            a.repo_url(href=`/git${elem.html_url}`) #{elem.name}
                             img(src="/public/img/remove.svg", alt="remove", title="удалить").removeBtn
                         -}
                     a#create_new_repo.whiteBtn(href='/creating_repo') создать новый

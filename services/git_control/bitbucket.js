@@ -111,6 +111,13 @@ class Bitbucket {
         }
         return res;
     }
+
+    async getRepo(repo_indent, user_indent) {
+        return await this.bitbucket.repositories.get({
+            repo_slug: repo_indent,
+            username: user_indent
+        })
+    }
 }
 
 module.exports = Bitbucket

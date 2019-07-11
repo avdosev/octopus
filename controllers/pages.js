@@ -33,9 +33,28 @@ const main = async (req, res) => {
 };
 
 const repo = async (req, res) => {
-    res.render('repo', {
-        authorised: req.isAuthenticated()
-    })
+
+    const gitController = req.user.gitControll
+    const controller = gitController.getCurrentControll();
+    
+    const { 
+        repo: repo_indet,
+        user: user_indet }  = req.params;
+    
+    try {
+        const repo = await controller.getRepo(repo_indet, user_indet);
+        console.log('Данные с репозитория: ', repo)
+        res.render('repo', {
+            authorised: req.isAuthenticated(),
+            repo,
+            title: `${user_indet}/${repo_indet}`
+        })
+    } catch (err) {
+        console.log('при получении репозитория возникла ошибка: ', err)
+        const not_found = objWithPagesMiddleware.not_found
+        not_found(req, res);
+    }
+
 }
 
 const treeOfRepo = async (req, res) => {
