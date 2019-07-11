@@ -67,6 +67,17 @@ module.exports = (passport) => {
 
     router.post('/create_repo', async (req, res, next) => {
         const body = req.body;
+
+        const contrl = req.user.gitControll.getCurrentControll()
+        if (contrl) {
+            try {
+                await contrl.createRepo(body)
+            } catch (err) {
+                console.log('ошибка при создании репозитория: ', err);
+            }
+        }
+
+        res.redirect('/')
     })
 
     return router

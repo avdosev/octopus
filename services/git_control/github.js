@@ -66,11 +66,11 @@ class GithubController {
         return this.local_auth.getUser(username || this.user.username)
     }
 
-    async createRepo({name, description, files}) {
+    async createRepo({name, description, files, is_public}) {
         try {
-            await getUser().createRepo({name, description, files})
+            await this.getUser().createRepo({name, description, files, 'public': is_public})
         } catch (error) {
-            throw error.response.data;
+            throw error;
         }
     }
     

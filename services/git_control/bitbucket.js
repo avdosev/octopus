@@ -2,7 +2,6 @@ const BitbucketApi = require('bitbucket')
 const { typeauth } = require('./const_for_class')
 
 class Bitbucket {
-    // TODO!!!!!!!!
     constructor({token, username, password}) {
         this.bitbucket = new BitbucketApi()
         this.token = token;
@@ -64,11 +63,16 @@ class Bitbucket {
         return this.user(username || this.user.username)
     }
 
-    async createRepo({name, description}) {
+    async createRepo({name, description, is_public}) {
         try {
-            await this.bitbucket.repositories.create({name, description})
+            await this.bitbucket.repositories.create({
+                username: this.user.username,
+                repo_slug: name, 
+                description, 
+                'private': !is_public
+            })
         } catch (error) {
-            throw error.response.data;
+            throw error;
         }
     }
 
