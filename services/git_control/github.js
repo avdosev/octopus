@@ -45,7 +45,6 @@ class GithubController {
         } catch (error) {
             console.log(error);
         }
-        try { console.log('data from github', res.data[0]) } catch {}
 
         res = res.data.reduce((acc, cur) => {
             const str = cur.html_url

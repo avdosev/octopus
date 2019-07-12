@@ -43,7 +43,6 @@ class Bitbucket {
         } catch (error) {
             console.log(error);
         }
-        try { console.log('data from bitbucket', res.data.values[0]) } catch {}
 
         res = res.data.values.reduce((acc, cur) => {
             const str = cur.links.html.href
