@@ -21,7 +21,7 @@ const main = async (req, res) => {
     const repositories = (controller &&  await controller.getListRepos()) || []
     const profile = (controller && await controller.getProfile()) || null
     const accounts = gitController.accounts || {}
-    console.log(profile)
+    
     res.render('main', {
         authorised: req.isAuthenticated(),
         repositories,
@@ -43,7 +43,6 @@ const repo = async (req, res) => {
     
     try {
         const repo = await controller.getRepo(repo_indet, user_indet);
-        console.log('Данные с репозитория: ', repo)
         res.render('repo', {
             authorised: req.isAuthenticated(),
             repo,
@@ -51,8 +50,9 @@ const repo = async (req, res) => {
         })
     } catch (err) {
         console.log('при получении репозитория возникла ошибка: ', err)
-        const not_found = objWithPagesMiddleware.not_found
-        not_found(req, res);
+        console.log('Данные при получении репозитория: ', repo_indet, user_indet)
+        const render_not_found = objWithPagesMiddleware.not_found
+        render_not_found(req, res);
     }
 
 }
